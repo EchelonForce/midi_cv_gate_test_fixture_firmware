@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "new": "cpp"
+    },
+    "arduino.clearOutputOnBuild": true,
+    "arduino.path": "C:\\Program Files (x86)\\Arduino",
+    "arduino.useArduinoCli": false
+}

@@ -1,0 +1,5 @@
+
+Nots from calibrating the test fixtures ADCs:
+Measured each analog input a 0.5V increments. Multimeter had 0.001 precision below 7V, 0.01V precision at/above 7.00V
+4.936V should be 0x0FFF (4095), The voltage divide on the input is 11k over 10k, so the max input is 10.37V
+So there's 10.37V/4095 = 2.53mV/bit (ideal).
