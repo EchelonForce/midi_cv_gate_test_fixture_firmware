@@ -18,7 +18,7 @@ def average_vals(vals):
         print(s)
 
 
-with open("cal_vals.txt", "r") as f:
+with open("test_fixture_cal_output.txt", "r") as f:
     vals = []
     for line in f:
         a = line.rstrip("\n").rstrip("\r")
@@ -31,11 +31,11 @@ with open("cal_vals.txt", "r") as f:
             # print(vs)
             vals.append(vs)
             # print(line)
-        elif "V" in a:
+        elif "Actual Volt" in a:
             average_vals(vals)
 
             print(a)
             vals = []
-        else:
+        elif a != "":
             print(a)
     average_vals(vals)

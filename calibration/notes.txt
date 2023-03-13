@@ -1,5 +1,10 @@
 
-Nots from calibrating the test fixtures ADCs:
+
+2023-03-13 Notes from re-calibrating the test fixture:
+Measured each analog input a 0.5V increments. Multimeter had 0.001 precision or better.
+Ref Volt: 4.9386 V, measured at 5VA test point.
+
+2022-10-30 Notes from calibrating the test fixtures ADCs:
 Measured each analog input a 0.5V increments. Multimeter had 0.001 precision below 7V, 0.01V precision at/above 7.00V
 4.936V should be 0x0FFF (4095), The voltage divide on the input is 11k over 10k, so the max input is 10.37V
 So there's 10.37V/4095 = 2.53mV/bit (ideal).

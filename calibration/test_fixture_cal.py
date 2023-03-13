@@ -12,42 +12,28 @@ the ADCs are giving accurate readings of the DUT.
 def main():
     ser = serial.Serial()
     ser.baudrate = 115200
-    ser.port = "COM8"
+    ser.port = "COM10"
     ser.timeout = 1
     ser.open()
     time.sleep(1.5)  # some time need (by windows?) to get a messages out correctly
 
-    send_command_return_response(ser, command="read_analog")
-    send_command_return_response(ser, command="read_analog")
-    send_command_return_response(ser, command="read_analog")
-    send_command_return_response(ser, command="read_analog")
-    send_command_return_response(ser, command="read_analog")
+    with open("test_fixture_cal_output.txt", "a") as out_file:
 
-    # send_command_return_response(ser, command="switch_on")
-    # time.sleep(0.3)
-    # send_command_return_response(ser, command="switch_off")
-    # send_command_return_response(ser, command="read_digital")
-    # send_command_return_response(ser, command="read_analog")
-    # for i in range(45, 45 + 9):
-    #     send_command_return_response(ser, command="midi_note_on={}".format(i))
-    # send_command_return_response(ser, command="read_analog")
-    # send_command_return_response(ser, command="read_digital")
-    # send_command_return_response(ser, command="read_digital")
-    # time.sleep(5.0)
-    # for i in range(45, 45 + 9):
-    #     send_command_return_response(ser, command="midi_note_off={}".format(i))
-    # send_command_return_response(ser, command="read_analog")
-    # send_command_return_response(ser, command="read_digital")
+        inp = input("Measure and enter 5VA ref voltage: ")
+        ref_volt = float(inp)
+        print(f"Ref Volt: {ref_volt} V")
+        out_file.write(f"Ref Volt: {ref_volt} V\n")
+        for voltage_ideal in [i * 0.5 for i in range(0, 22, 1)]:
+            print(f"Input Voltage (ideal): {voltage_ideal} V")
+            inp = input("Measure and enter actual input voltage: ")
+            actual_volt = float(inp)
+            print(f"Actual Volt: {actual_volt} V")
+            out_file.write(f"Actual Volt: {actual_volt} V\n")
 
-    # send_command_return_response(ser, command="switch_on")
-    # time.sleep(0.3)
-    # send_command_return_response(ser, command="switch_off")
-    # send_command_return_response(ser, command="read_analog")
-
-    # send_command_return_response(ser, command="write_digital=0000")
-    # send_command_return_response(ser, command="write_digital=3333")
-    # send_command_return_response(ser, command="write_digital=cccc")
-    # send_command_return_response(ser, command="write_digital=ffff")
+            for num_readings in range(0, 6):
+                readings = send_command_return_response(ser, command="read_analog")
+                out_file.write(f"{readings}\n")
+            out_file.flush()
 
     ser.close()
 

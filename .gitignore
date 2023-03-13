@@ -12,3 +12,4 @@
 *.vsix
 /build/
 /cal_data/*
+/calibration/old_cals/*
