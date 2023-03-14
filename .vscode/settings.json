@@ -4,5 +4,17 @@
     },
     "arduino.clearOutputOnBuild": true,
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
-    "arduino.useArduinoCli": false
+    "arduino.useArduinoCli": false,
+    "explorer.autoRevealExclude": {
+        "**/build": true,
+        "**/__pycache__": true
+    },
+    "search.exclude": {
+        "**/build": true,
+        "**/__pycache__": true
+    },
+    "files.exclude": {
+        "**/build": true,
+        "**/__pycache__": true
+    }
 }

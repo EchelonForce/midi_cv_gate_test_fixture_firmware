@@ -21,6 +21,13 @@ This script is used to examine the data gathered from the DUT by test_dut_cv.py
 # .\calibration folder
 This folder has scripts used to calibrate the test fixture's ADCs. It is used to create the cal_vals_converted.txt file that is used by convert_dut_cv_to_cal_table.py
 
+# .\test_cases folder and run_all_test_cases.cmd
+This folder has a set of python unit tests that interact with the test fixture and the connected DUT to check the behavior of each mode in the DUT firmware.
+run_all_test_cases.cmd will run all the tests.
+Individual tests can be run with standard python unit test commands:
+
+> python -m unittest discover test_cases -k drone
+
 # Other stuff
 io_expander_test\midi_cv_gate_test_fixture_io_expander_test.ino - This was an intermediate test firmware to sort out the io expander on the test fixture.
 adc_test\midi_cv_gate_test_fixture_adc_test.ino - This was an intermediate test firmware to sort out the ADCs on the test fixture.

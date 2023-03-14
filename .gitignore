@@ -10,6 +10,14 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+#Arduino
 /build/
+
+#Project
 /cal_data/*
 /calibration/old_cals/*
+
+#python
+/__pycache__/*
+*/__pycache__/*

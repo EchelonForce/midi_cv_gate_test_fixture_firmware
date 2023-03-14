@@ -186,6 +186,32 @@ void handle_command(char const *const buf, uint8_t size)
             Serial.println("sent");
         }
     }
+    else if (command_match(buf, size, "midi_change_mode="))
+    {
+        uint8_t mode = strtoul(&buf[17], NULL, 10);
+        if (errno > 0)
+        {
+            Serial.print("error=");
+            Serial.println(errno);
+            errno = 0;
+        }
+        else
+        {
+            // DataEntryLSB (38) is used in the DUT to allow mode changes.
+            MIDI.sendControlChange(midi::MidiControlChangeNumber::DataEntryLSB, mode, midi_channel);
+            Serial.println("sent");
+        }
+    }
+    else if (command_match(buf, size, "midi_all_sound_off"))
+    {
+        MIDI.sendControlChange(midi::MidiControlChangeNumber::AllSoundOff, 0, midi_channel);
+        Serial.println("sent");
+    }
+    else if (command_match(buf, size, "midi_all_notes_off"))
+    {
+        MIDI.sendControlChange(midi::MidiControlChangeNumber::AllNotesOff, 0, midi_channel);
+        Serial.println("sent");
+    }
     else if (command_match(buf, size, "switch_on"))
     {
         digitalWrite(SWITCH_OUT_PIN, HIGH);
