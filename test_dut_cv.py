@@ -141,9 +141,12 @@ def teardown():
 
 def reset_dut():
     """Emulate a (short) button press which cancels all notes."""
-    send_command_return_response(ser, command="switch_on")
-    time.sleep(0.3)  # >200ms needed
-    send_command_return_response(ser, command="switch_off")
+    # send_command_return_response(ser, command="switch_on")
+    # time.sleep(0.3)  # >200ms needed
+    # send_command_return_response(ser, command="switch_off")
+    send_command_return_response(ser, command="midi_all_notes_off")
+    send_command_return_response(ser, command="midi_change_mode=0")
+    time.sleep(0.3)
 
 
 def send_command_return_response(ser, command="read_digital", delay=0.2):
